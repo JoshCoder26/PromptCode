@@ -1,6 +1,5 @@
-/* --- CLEAN TECH THEME FOR PROMPTCODE --- */
+/* --- ULTRA-MINIMALIST TECH THEME --- */
 
-/* Basis instellingen */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,73 +7,67 @@
 }
 
 body {
-    background-color: #0d1117; /* GitHub Donkergrijs/blauw */
-    color: #c9d1d9; /* Comfortabele lichte tekst */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+    background-color: #0b0d10; /* Diep donkerzwart */
+    color: #aeafb0; /* Rustig grijs */
+    font-family: 'Courier New', Courier, monospace; /* Alles in een strak code-lettertype */
+    padding-bottom: 60px;
 }
 
-/* De Header & Menu Opschonen */
+/* Header & Menu */
 header {
-    background-color: #161b22;
-    border-bottom: 1px solid #30363d;
-    padding: 15px 5%;
+    background-color: #0b0d10;
+    border-bottom: 1px solid #1f2326;
+    padding: 20px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
 .logo {
-    font-family: 'Courier New', Courier, monospace; /* Code lettertype voor de logo */
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     color: #ffffff;
+    letter-spacing: -0.5px;
 }
 
 .logo span {
-    color: #58a6ff; /* Mooi tech-blauw accent */
+    color: #4f5b66; /* Subtieler grijs in plaats van fel blauw */
 }
 
 .menu {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
-/* De Tabs Knoppen */
+/* Minimalistische knoppen */
 .tab-btn {
     background: none;
     border: none;
-    color: #8b949e;
-    padding: 8px 16px;
-    font-size: 1rem;
+    color: #4f5b66;
+    padding: 5px 0;
+    font-size: 0.95rem;
     cursor: pointer;
-    border-radius: 6px;
-    transition: all 0.2s ease;
+    font-family: inherit;
+    transition: color 0.2s ease;
 }
 
 .tab-btn:hover {
-    background-color: #21262d;
     color: #ffffff;
 }
 
 .tab-btn.active {
-    background-color: #21262d;
-    color: #58a6ff;
-    border-bottom: 2px solid #58a6ff;
-    border-radius: 6px 6px 0 0;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff; /* Simpele witte streep */
 }
 
 /* Container */
 .container {
-    max-width: 800px;
-    margin: 40px auto;
+    max-width: 700px;
+    margin: 60px auto 0 auto;
     padding: 0 20px;
 }
 
-/* Tabbladen logica (Verbergen wat niet actief is) */
+/* Tab Logic */
 .tab-content {
     display: none;
 }
@@ -83,66 +76,75 @@ header {
     display: block;
 }
 
-/* Titels */
+/* Typografie */
 h1 {
     color: #ffffff;
-    font-size: 2.2rem;
+    font-size: 1.6rem;
+    font-weight: normal;
     margin-bottom: 10px;
 }
 
-p {
-    color: #8b949e;
-    margin-bottom: 30px;
+.subtitle {
+    color: #65737e;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
 }
 
-/* Home Cards Layout */
-.features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+/* Minimalistische Home indeling */
+.features-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.feature-line {
+    display: flex;
     gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #1f2326; /* Alleen een strak onderlijntje */
 }
 
-.feature-card, .portfolio-item {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 8px;
-    padding: 20px;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+.num {
+    color: #4f5b66;
+    font-weight: bold;
 }
 
-/* SUBTIELE TECH GLOED BIJ HOVER */
-.feature-card:hover, .portfolio-item:hover {
-    transform: translateY(-2px);
-    border-color: #58a6ff;
-    box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
+.feature-line h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 5px;
 }
 
-.feature-card h3, .portfolio-item h3 {
-    color: #58a6ff;
-    margin-bottom: 10px;
+/* Portfolio Lijst */
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Portfolio grid */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.portfolio-row {
+    display: flex;
+    align-items: baseline;
+    gap: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #1f2326;
 }
 
 .tag {
-    display: inline-block;
-    background-color: #21262d;
-    color: #58a6ff;
-    padding: 3px 8px;
-    font-size: 0.8rem;
-    border-radius: 12px;
-    margin-top: 15px;
-    font-family: monospace;
+    color: #65737e;
+    font-size: 0.85rem;
+    min-width: 90px;
 }
 
-/* Het Formulier */
+.project-info h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+/* Formulier */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 label {
@@ -150,42 +152,39 @@ label {
     margin-bottom: 8px;
     color: #ffffff;
     font-size: 0.9rem;
-    font-weight: 600;
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 12px;
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 6px;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #343d46; /* Input is alleen een onderlijn */
     color: #ffffff;
     font-family: inherit;
     font-size: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s;
 }
 
-/* INVOERVELD GLOW EFFECT */
 input:focus, select:focus, textarea:focus {
-    border-color: #58a6ff;
+    border-bottom-color: #ffffff; /* Licht op naar wit bij selectie */
     outline: none;
-    box-shadow: 0 0 8px rgba(88, 166, 255, 0.25);
 }
 
-/* Verzendknop */
+/* Knop */
 .submit-btn {
-    background-color: #238636; /* Prachtig groen */
-    color: #ffffff;
-    border: 1px solid rgba(240, 246, 252, 0.1);
-    padding: 14px;
+    background-color: #ffffff; /* Strak wit op zwart */
+    color: #0b0d10;
+    border: none;
+    padding: 15px;
     font-size: 1rem;
     font-weight: bold;
-    border-radius: 6px;
     cursor: pointer;
     width: 100%;
+    font-family: inherit;
     transition: background-color 0.2s;
 }
 
 .submit-btn:hover {
-    background-color: #2ea043;
+    background-color: #c5c5c5;
 }
