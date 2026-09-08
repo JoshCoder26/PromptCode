@@ -1,12 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - PromptCode</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptCode - High-End IT Services</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script src="script.js"></script>
+
+    <!-- NAVIGATIEBAR (MINIMALISTISCH) -->
+    <header>
+        <div class="logo">PromptCode<span>.tech</span></div>
+        <nav class="menu">
+            <button class="tab-btn active" onclick="openTab(event, 'home')">Home</button>
+            <button class="tab-btn" onclick="openTab(event, 'portfolio')">Portfolio</button>
+            <button class="tab-btn" onclick="openTab(event, 'order')">Request</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- TAB 1: HOME -->
+        <section id="home" class="tab-content active-content">
+            <h1>Welcome to the Future of Code</h1>
+            <p class="subtitle">Fast, reliable development and expert debugging. Powered by logical precision and modern AI-driven solutions.</p>
+            
+            <div class="features-minimal">
+                <div class="feature-line">
+                    <span class="num">01 //</span>
+                    <div>
+                        <h3>Priority Delivery</h3>
+                        <p>Skip the waiting list with our expedited express queue.</p>
+                    </div>
+                </div>
+                <div class="feature-line">
+                    <span class="num">02 //</span>
+                    <div>
+                        <h3>Expert Debugging</h3>
+                        <p>Broken code? We hunt down bugs and patch them instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: PORTFOLIO -->
+        <section id="portfolio" class="tab-content">
+            <h1>Our Showcase</h1>
+            <p class="subtitle">A minimalist overview of the projects we've built from scratch.</p>
+            
+            <div class="portfolio-list">
+                <div class="portfolio-row">
+                    <span class="tag">Python</span>
+                    <div class="project-info">
+                        <h3>Project Alpha</h3>
+                        <p>High-performance automated script.</p>
+                    </div>
+                </div>
+                <div class="portfolio-row">
+                    <span class="tag">HTML/JS</span>
+                    <div class="project-info">
+                        <h3>PromptCode Platform</h3>
+                        <p>This exact professional freelancer website.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: CONTACT FORMULIER -->
+        <section id="order" class="tab-content">
+            <h1>Request a Project</h1>
+            <p class="subtitle">Higher budgets unlock faster priority delivery.</p>
+            
+            <form action="https://formsubmit.co" method="POST" id="contactForm">
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" name="email" id="email" required placeholder="name@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="bedrijf">Company Name (Optional)</label>
+                    <input type="text" name="company" id="bedrijf" placeholder="e.g. Acme Corp">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Select Service *</label>
+                    <select name="service" id="service" required>
+                        <option value="development">Regular Programming</option>
+                        <option value="debugging">Debugging & Bug Fixing</option>
+                        <option value="optimization">Code Optimization</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Delivery Speed *</label>
+                    <select name="priority" id="priority" required>
+                        <option value="standard">Standard (Normal waiting list)</option>
+                        <option value="priority">Priority Boarding (Faster delivery)</option>
+                        <option value="rush">Express Rush (Immediate start)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Your Budget (€) *</label>
+                    <input type="number" name="budget" id="budget" required placeholder="500">
+                </div>
+
+                <div class="form-group">
+                    <label for="beschrijving">Project Description *</label>
+                    <textarea name="description" id="beschrijving" rows="5" required placeholder="Describe your project requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
