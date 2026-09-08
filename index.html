@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PromptCode - High-End IT Services</title>
-    <!-- We linken hier naar je CSS-bestand -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. DE HEADER EN NAVIGATIEBAR -->
+    <!-- NAVIGATIEBAR (MINIMALISTISCH) -->
     <header>
         <div class="logo">PromptCode<span>.tech</span></div>
         <nav class="menu">
-            <button class="tab-btn active" onclick="openTab('home')">Home</button>
-            <button class="tab-btn" onclick="openTab('portfolio')">Portfolio</button>
-            <button class="tab-btn" onclick="openTab('order')">Request Order</button>
+            <button class="tab-btn active" onclick="openTab(event, 'home')">Home</button>
+            <button class="tab-btn" onclick="openTab(event, 'portfolio')">Portfolio</button>
+            <button class="tab-btn" onclick="openTab(event, 'order')">Request</button>
         </nav>
     </header>
 
@@ -23,15 +22,22 @@
         <!-- TAB 1: HOME -->
         <section id="home" class="tab-content active-content">
             <h1>Welcome to the Future of Code</h1>
-            <p>Fast, reliable development and expert debugging. Powered by logical precision and modern AI-driven solutions.</p>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>⚡ Priority Delivery</h3>
-                    <p>Need it fast? Skip the waiting list with our expedited express queue.</p>
+            <p class="subtitle">Fast, reliable development and expert debugging. Powered by logical precision and modern AI-driven solutions.</p>
+            
+            <div class="features-minimal">
+                <div class="feature-line">
+                    <span class="num">01 //</span>
+                    <div>
+                        <h3>Priority Delivery</h3>
+                        <p>Skip the waiting list with our expedited express queue.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>🛡️ Expert Debugging</h3>
-                    <p>Broken code? Broken logic? We hunt down bugs and patch them instantly.</p>
+                <div class="feature-line">
+                    <span class="num">02 //</span>
+                    <div>
+                        <h3>Expert Debugging</h3>
+                        <p>Broken code? We hunt down bugs and patch them instantly.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -39,17 +45,22 @@
         <!-- TAB 2: PORTFOLIO -->
         <section id="portfolio" class="tab-content">
             <h1>Our Showcase</h1>
-            <p>Take a look at the projects we've built from scratch.</p>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <h3>Project Alpha</h3>
-                    <p>A high-performance automated script built in Python.</p>
+            <p class="subtitle">A minimalist overview of the projects we've built from scratch.</p>
+            
+            <div class="portfolio-list">
+                <div class="portfolio-row">
                     <span class="tag">Python</span>
+                    <div class="project-info">
+                        <h3>Project Alpha</h3>
+                        <p>High-performance automated script.</p>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <h3>PromptCode Platform</h3>
-                    <p>This exact professional freelancer website dashboard.</p>
-                    <span class="tag">HTML / CSS / JS</span>
+                <div class="portfolio-row">
+                    <span class="tag">HTML/JS</span>
+                    <div class="project-info">
+                        <h3>PromptCode Platform</h3>
+                        <p>This exact professional freelancer website.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -57,7 +68,7 @@
         <!-- TAB 3: CONTACT FORMULIER -->
         <section id="order" class="tab-content">
             <h1>Request a Project</h1>
-            <p>Fill out the form below. Higher budgets unlock faster priority delivery.</p>
+            <p class="subtitle">Higher budgets unlock faster priority delivery.</p>
             
             <form action="https://formsubmit.co" method="POST" id="contactForm">
                 <div class="form-group">
@@ -75,7 +86,7 @@
                     <select name="service" id="service" required>
                         <option value="development">Regular Programming</option>
                         <option value="debugging">Debugging & Bug Fixing</option>
-                        <option value="optimization">Code Optimization (Speed & Security)</option>
+                        <option value="optimization">Code Optimization</option>
                     </select>
                 </div>
 
@@ -83,8 +94,8 @@
                     <label for="priority">Delivery Speed *</label>
                     <select name="priority" id="priority" required>
                         <option value="standard">Standard (Normal waiting list)</option>
-                        <option value="priority">Priority Boarding (Faster delivery - Extra fee)</option>
-                        <option value="rush">Express Rush (Immediate start - Highest fee)</option>
+                        <option value="priority">Priority Boarding (Faster delivery)</option>
+                        <option value="rush">Express Rush (Immediate start)</option>
                     </select>
                 </div>
 
@@ -103,7 +114,6 @@
         </section>
     </main>
 
-    <!-- We linken naar je JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
