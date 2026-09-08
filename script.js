@@ -1,5 +1,5 @@
-// FUNCTIONALITEIT VOOR DE TABS
-function openTab(tabId) {
+// FUNCTIONALITEIT VOOR DE TABS (GEFIXT)
+function openTab(evt, tabId) {
     // 1. Verberg alle tab-inhoud
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => content.classList.remove('active-content'));
@@ -10,7 +10,7 @@ function openTab(tabId) {
 
     // 3. Toon de geselecteerde tab en zet de geklikte knop op actief
     document.getElementById(tabId).classList.add('active-content');
-    event.currentTarget.classList.add('active');
+    evt.currentTarget.classList.add('active');
 }
 
 // FORMSUBMIT LOGICA VIA FETCH
@@ -20,18 +20,17 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const formData = new FormData(this);
     const submitButton = this.querySelector('.submit-btn');
     
-    // Verander knoptekst tijdens het laden
     submitButton.innerText = "Sending Request...";
     submitButton.disabled = true;
 
-    fetch("https://formsubmit.co/joshua.huizer@gmail.com", { // Vul hier je echte mail in!
+    fetch("https://formsubmit.co", { // Vul hier je echte mail in!
         method: "POST",
         body: formData,
         headers: { 'Accept': 'application/json' }
     })
     .then(response => response.json())
     .then(data => {
-        alert("Success! Your prompt request has been received by PromptCode.");
+        alert("Success! Your request has been received.");
         this.reset();
     })
     .catch(error => {
@@ -39,7 +38,6 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         alert("Something went wrong. Please try again.");
     })
     .finally(() => {
-        // Herstel de knop
         submitButton.innerText = "Submit Request";
         submitButton.disabled = false;
     });
