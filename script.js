@@ -1,6 +1,6 @@
 alert("Javascript works")
 document.title = "Home - PromptCode"
-documument.querySelector('#home').classList.add('active')
+document.querySelector('#home').classList.add('active')
 function changeTab(targetId, newTitle) {
     // 1. Verander de titel van het tabblad
     document.title = newTitle;
