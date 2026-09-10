@@ -7,6 +7,7 @@ function changeTab(targetId, newTitle) {
     
     // 3. Laat de browser er vloeiend naartoe scrollen
     if (targetSection) {
+        targetSection.classList.add('active');
         targetSection.scrollIntoView({ 
             behavior: 'smooth', 
             block: 'start' 
