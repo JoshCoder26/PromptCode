@@ -67,7 +67,7 @@ main {
     flex-direction: row;
     width: 300vw;
     height: calc(100vh - 80px);
-    overflow: autp;
+    overflow: hidden;
     scroll-behavior: smooth;
     background-color: #0d1117;
 }
