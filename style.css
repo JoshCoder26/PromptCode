@@ -25,7 +25,6 @@ nav a {
     margin-left: 25px;
     font-size: 1.1em;
     transition: color 0.2s;
-    cursor: pointer;
 }
 
 nav a:hover {
