@@ -1,3 +1,4 @@
+alert("JavaScript laadt succesvol!");
 const navLinks = document.querySelectorAll('nav a');
 navLinks.forEach(link => {
     link.addEventListener('click', (event) => {
