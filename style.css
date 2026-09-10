@@ -47,7 +47,7 @@ nav a:hover {
 section {
     width: 100vw;
     flex-shrink: 0;
-    height: 100%;
+    height: calc(100vh - 80px);
     padding: 40px;
     box-sizing: border-box;
     display: none;
@@ -64,7 +64,7 @@ main {
     display: flex;
     flex-direction: row;
     width: 300vw;
-    height: calc(100vh - 40px);
+    height: calc(100vh - 80px);
     overflow: hidden;
     scroll-behavior: smooth;
     background-color: #0d1117;
