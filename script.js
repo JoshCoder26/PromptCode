@@ -3,44 +3,31 @@ function changeTab(targetId, newTitle) {
     
     // Get all sections and find current and target
     const allSections = document.querySelectorAll('section');
-    let currentSection = null;
-    let targetSection = null;
     let currentIndex = 0;
     let targetIndex = 0;
     
     allSections.forEach((section, index) => {
-        if (section.classList.contains('active')) {
-            currentSection = section;
-            currentIndex = index;
-        }
         if (section.id === targetId.substring(1)) { // Remove # from targetId
-            targetSection = section;
             targetIndex = index;
         }
     });
-    
-    if (!targetSection) return;
-    
-    // Remove active class from all sections and add to target
-    allSections.forEach(section => {
-        section.classList.remove('active');
-    });
-    targetSection.classList.add('active');
     
     // Animate the horizontal scroll
     animateHorizontalScroll(currentIndex, targetIndex, 1000); // 1 second
 }
 
 function animateHorizontalScroll(fromIndex, toIndex, duration) {
+    const container = document.querySelector('.sections-container');
     const sectionWidth = window.innerWidth;
     
     // Calculate scroll positions
-    const fromScrollX = fromIndex * sectionWidth;
     const toScrollX = toIndex * sectionWidth;
     
     const startTime = Date.now();
-    const startScrollX = window.scrollX;
+    const startScrollX = container.scrollLeft;
     const distance = toScrollX - startScrollX;
+    
+    console.log('Scrolling from', startScrollX, 'to', toScrollX, 'distance:', distance);
     
     function animate() {
         const elapsed = Date.now() - startTime;
@@ -52,7 +39,7 @@ function animateHorizontalScroll(fromIndex, toIndex, duration) {
             : -1 + (4 - 2 * progress) * progress;
         
         const currentScrollX = startScrollX + distance * easeProgress;
-        window.scrollTo(currentScrollX, 0);
+        container.scrollLeft = currentScrollX;
         
         if (progress < 1) {
             requestAnimationFrame(animate);
@@ -101,11 +88,9 @@ window.addEventListener('hashchange', () => {
     else if (hash === '#form') displayForm();
 });
 
-// Prevent horizontal scrolling on body (except during animations)
-let isAnimating = false;
-
+// Prevent horizontal scrolling on body (except via nav buttons)
 document.addEventListener('wheel', function(e) {
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && !isAnimating) {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
         e.preventDefault();
     }
 }, { passive: false });
@@ -117,8 +102,6 @@ document.addEventListener('touchstart', function(e) {
 }, false);
 
 document.addEventListener('touchmove', function(e) {
-    if (isAnimating) return;
-    
     const currentX = e.touches[0].clientX;
     const diffX = Math.abs(currentX - lastX);
     const diffY = Math.abs(e.touches[0].clientY - (e.touches[0].clientY || 0));
