@@ -25,17 +25,17 @@ function animateNavScroll(targetId) {
     });
     
     if (targetLink) {
-        const navRect = nav.getBoundingClientRect();
-        const linkRect = targetLink.getBoundingClientRect();
-        const offset = linkRect.left - navRect.left;
+        const linkOffsetLeft = targetLink.offsetLeft;
+        const navWidth = nav.clientWidth;
+        const linkWidth = targetLink.offsetWidth;
+        
+        // Calculate the scroll position to center the link
+        const scrollPosition = linkOffsetLeft - (navWidth / 2) + (linkWidth / 2);
         
         // Animate the scroll
-        nav.animate([
-            { transform: 'translateX(0)' },
-            { transform: `translateX(-${offset}px)` }
-        ], {
-            duration: 400,
-            easing: 'ease-in-out'
+        nav.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
         });
     }
 }
