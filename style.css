@@ -58,6 +58,8 @@ section {
     background-color: #0d1117;
 }
 
+#form { background-color: #0d1117; }
+
 main {
     display: flex;
     flex-direction: row;
