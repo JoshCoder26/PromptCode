@@ -1,12 +1,24 @@
-const navLinks = document.querySelectorAll('nav a');
-navLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-        const targetId = link.getAttribute('href');
-        if (targetId === '#home') {
-            document.title = "Home - PromptCode";
-        } else if (targetId === '#about') {
-            document.title = "About - PromptCode";
-        } else if (targetId === '#form') {
-            document.title = "Request code writing/enhancing/debugging";
-        }
-    })});
+function changeTab(targetId, newTitle) {
+    document.title = newTitle;
+    const allSections = document.querySelectorAll('section');
+    allSections.forEach(section => {
+        section.classList.remove('active');
+    });
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+}
+
+// Dit zijn de functies die jouw HTML aanroept via onclick
+function displayHome() {
+    changeTab('#home', "Home - PromptCode");
+}
+
+function displayAbout() {
+    changeTab('#about', "About - PromptCode");
+}
+
+function displayForm() {
+    changeTab('#form', "Request code writing/enhancing/debugging");
+}
