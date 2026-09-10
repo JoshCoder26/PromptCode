@@ -26,4 +26,5 @@ function displayAbout() {
 function displayForm() {
     changeTab('#form', "Request code writing/enhancing/debugging");
 }
+document.title = "Home - PromptCode"
 documument.querySelector('#home').classList.add('active')
