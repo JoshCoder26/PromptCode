@@ -55,6 +55,7 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #0d1117;
 }
 
 main {
@@ -64,15 +65,12 @@ main {
     height: calc(100vh - 80px);
     overflow: hidden;
     scroll-behavior: smooth;
+    background-color: #0d1117;
 }
 
 section.active {
     display: flex;
 }
-
-#home { background-color: #0d1117; }
-#about { background-color: #161b22; }
-#form { background-color: #0d1117; }
 
 section h1 {
     color: #58a6ff;
