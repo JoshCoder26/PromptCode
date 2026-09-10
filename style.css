@@ -12,7 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: auto;
+    overflow: hidden;
 }
 header {
     position: fixed;
@@ -67,7 +67,7 @@ main {
     flex-direction: row;
     width: 300vw;
     height: calc(100vh - 80px);
-    overflow: hidden;
+    overflow: autp;
     scroll-behavior: smooth;
     background-color: #0d1117;
 }
