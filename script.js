@@ -25,18 +25,20 @@ function animateNavScroll(targetId) {
     });
     
     if (targetLink) {
-        const linkOffsetLeft = targetLink.offsetLeft;
-        const navWidth = nav.clientWidth;
-        const linkWidth = targetLink.offsetWidth;
-        
-        // Calculate the scroll position to center the link
-        const scrollPosition = linkOffsetLeft - (navWidth / 2) + (linkWidth / 2);
-        
-        // Animate the scroll
-        nav.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
+        setTimeout(() => {
+            const linkOffsetLeft = targetLink.offsetLeft;
+            const navWidth = nav.clientWidth;
+            const linkWidth = targetLink.offsetWidth;
+            
+            // Calculate the scroll position to center the link
+            const scrollPosition = linkOffsetLeft - (navWidth / 2) + (linkWidth / 2);
+            
+            // Animate the scroll using requestAnimationFrame for smoothness
+            nav.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        }, 0);
     }
 }
 
@@ -52,6 +54,30 @@ function displayAbout() {
 function displayForm() {
     changeTab('#form', "Request code writing/enhancing/debugging");
 }
+
+// Check URL hash on page load and navigate to appropriate tab
+function initializePageFromHash() {
+    const hash = window.location.hash;
+    
+    if (hash === '#about') {
+        displayAbout();
+    } else if (hash === '#form') {
+        displayForm();
+    } else {
+        displayHome();
+    }
+}
+
+// Initialize on page load
+window.addEventListener('load', initializePageFromHash);
+
+// Also handle hash changes
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+    if (hash === '#home') displayHome();
+    else if (hash === '#about') displayAbout();
+    else if (hash === '#form') displayForm();
+});
 
 // Prevent horizontal scrolling
 document.addEventListener('wheel', function(e) {
