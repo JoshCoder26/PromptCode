@@ -1,33 +1,51 @@
+let currentTabIndex = 0;
+const tabMap = {
+    'home': 0,
+    'about': 1,
+    'form': 2
+};
+
 function changeTab(targetId, newTitle) {
     document.title = newTitle;
     
-    // Get all sections and find current and target
+    // Get the tab index
+    const targetTabId = targetId.substring(1); // Remove #
+    const targetIndex = tabMap[targetTabId];
+    
+    if (targetIndex === undefined) return;
+    
+    // Animate the scroll
+    animateHorizontalScroll(currentTabIndex, targetIndex);
+    
+    // Update sections
     const allSections = document.querySelectorAll('section');
-    let currentIndex = 0;
-    let targetIndex = 0;
-    
-    allSections.forEach((section, index) => {
-        if (section.id === targetId.substring(1)) { // Remove # from targetId
-            targetIndex = index;
-        }
+    allSections.forEach(section => {
+        section.classList.remove('active');
     });
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
     
-    // Animate the horizontal scroll
-    animateHorizontalScroll(currentIndex, targetIndex, 1000); // 1 second
+    // Update current index
+    currentTabIndex = targetIndex;
 }
 
-function animateHorizontalScroll(fromIndex, toIndex, duration) {
-    const container = document.querySelector('.sections-container');
-    const sectionWidth = window.innerWidth;
+function animateHorizontalScroll(fromIndex, toIndex) {
+    const duration = 1000; // 1 second
+    const distance = Math.abs(toIndex - fromIndex); // Number of sections to scroll
     
-    // Calculate scroll positions
-    const toScrollX = toIndex * sectionWidth;
+    // Calculate pixels to scroll (each section is viewport width)
+    const pixelsPerSection = window.innerWidth;
+    const totalPixels = distance * pixelsPerSection;
+    const direction = toIndex > fromIndex ? 1 : -1;
     
     const startTime = Date.now();
-    const startScrollX = container.scrollLeft;
-    const distance = toScrollX - startScrollX;
+    const startScrollX = window.scrollX;
+    const targetScrollX = startScrollX + (totalPixels * direction);
     
-    console.log('Scrolling from', startScrollX, 'to', toScrollX, 'distance:', distance);
+    console.log('Animating from index', fromIndex, 'to', toIndex);
+    console.log('Scrolling from', startScrollX, 'to', targetScrollX);
     
     function animate() {
         const elapsed = Date.now() - startTime;
@@ -38,8 +56,10 @@ function animateHorizontalScroll(fromIndex, toIndex, duration) {
             ? 2 * progress * progress 
             : -1 + (4 - 2 * progress) * progress;
         
-        const currentScrollX = startScrollX + distance * easeProgress;
-        container.scrollLeft = currentScrollX;
+        const scrollDifference = targetScrollX - startScrollX;
+        const currentScrollX = startScrollX + scrollDifference * easeProgress;
+        
+        window.scrollTo(currentScrollX, 0);
         
         if (progress < 1) {
             requestAnimationFrame(animate);
@@ -64,12 +84,12 @@ function displayForm() {
 
 // Check URL hash on page load and navigate to appropriate tab
 function initializePageFromHash() {
-    const hash = window.location.hash;
+    const hash = window.location.hash.substring(1); // Remove #
     console.log('Hash detected:', hash);
     
-    if (hash === '#about') {
+    if (hash === 'about') {
         displayAbout();
-    } else if (hash === '#form') {
+    } else if (hash === 'form') {
         displayForm();
     } else {
         displayHome();
@@ -81,14 +101,14 @@ document.addEventListener('DOMContentLoaded', initializePageFromHash);
 
 // Also handle hash changes when user clicks back/forward
 window.addEventListener('hashchange', () => {
-    const hash = window.location.hash;
+    const hash = window.location.hash.substring(1);
     console.log('Hash changed to:', hash);
-    if (hash === '#home') displayHome();
-    else if (hash === '#about') displayAbout();
-    else if (hash === '#form') displayForm();
+    if (hash === 'home') displayHome();
+    else if (hash === 'about') displayAbout();
+    else if (hash === 'form') displayForm();
 });
 
-// Prevent horizontal scrolling on body (except via nav buttons)
+// Prevent horizontal scrolling on body (users can only use nav buttons)
 document.addEventListener('wheel', function(e) {
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
         e.preventDefault();
