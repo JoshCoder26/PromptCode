@@ -1,16 +1,19 @@
 function changeTab(targetId, newTitle) {
+    // 1. Verander de titel van het tabblad
     document.title = newTitle;
-    const allSections = document.querySelectorAll('section');
-    allSections.forEach(section => {
-        section.classList.remove('active');
-    });
+
+    // 2. Zoek de juiste sectie op
     const targetSection = document.querySelector(targetId);
+    
+    // 3. Laat de browser er vloeiend naartoe scrollen
     if (targetSection) {
-        targetSection.classList.add('active');
+        targetSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
     }
 }
 
-// Dit zijn de functies die jouw HTML aanroept via onclick
 function displayHome() {
     changeTab('#home', "Home - PromptCode");
 }
