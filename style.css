@@ -23,15 +23,24 @@ header h2 {
 nav {
     display: flex;
     gap: 25px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+    display: none;
 }
 
 nav a {
     color: #8b949e;
     text-decoration: none;
     font-size: 1.1em;
-    transition: color 0.2s, transform 0.4s ease-in-out;
+    transition: color 0.2s;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 nav a:hover {
