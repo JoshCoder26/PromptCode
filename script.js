@@ -26,3 +26,4 @@ function displayAbout() {
 function displayForm() {
     changeTab('#form', "Request code writing/enhancing/debugging");
 }
+documument.querySelector('#home').classList.add('active')
