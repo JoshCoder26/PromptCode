@@ -1,5 +1,4 @@
 const navLinks = document.querySelectorAll('nav a');
-
 navLinks.forEach(link => {
     link.addEventListener('click', (event) => {
         const targetId = link.getAttribute('href');
@@ -10,4 +9,4 @@ navLinks.forEach(link => {
         } else if (targetId === '#form') {
             document.title = "Request code writing/enhancing/debugging";
         }
-    });
+    })});
