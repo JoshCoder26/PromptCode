@@ -1,54 +1,74 @@
 function changeTab(targetId, newTitle) {
     document.title = newTitle;
+    
+    // Get all sections and find current and target
     const allSections = document.querySelectorAll('section');
-    allSections.forEach(section => {
-        section.classList.remove('active');
-    });
-    const targetSection = document.querySelector(targetId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-    }
+    let currentSection = null;
+    let targetSection = null;
+    let currentIndex = 0;
+    let targetIndex = 0;
     
-    // Horizontal scroll animation for nav
-    animateNavScroll(targetId);
-}
-
-function animateNavScroll(targetId) {
-    const nav = document.querySelector('nav');
-    const links = document.querySelectorAll('nav a');
-    let targetLink = null;
-    
-    links.forEach(link => {
-        if (link.getAttribute('href') === targetId) {
-            targetLink = link;
+    allSections.forEach((section, index) => {
+        if (section.classList.contains('active')) {
+            currentSection = section;
+            currentIndex = index;
+        }
+        if (section.id === targetId.substring(1)) { // Remove # from targetId
+            targetSection = section;
+            targetIndex = index;
         }
     });
     
-    if (targetLink) {
-        // Use requestAnimationFrame to ensure DOM is ready
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                const linkOffsetLeft = targetLink.offsetLeft;
-                const navWidth = nav.clientWidth;
-                const linkWidth = targetLink.offsetWidth;
-                
-                // Calculate scroll position to center the link in the nav
-                const scrollPosition = linkOffsetLeft - (navWidth / 2) + (linkWidth / 2);
-                
-                // Clamp to valid scroll range
-                const maxScroll = nav.scrollWidth - navWidth;
-                const finalPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
-                
-                console.log('Scrolling to:', finalPosition, 'Link offset:', linkOffsetLeft, 'Nav width:', navWidth);
-                
-                // Animate the scroll
-                nav.scrollTo({
-                    left: finalPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
+    if (!targetSection) return;
+    
+    // Calculate direction and distance
+    const isMovingRight = targetIndex > currentIndex;
+    const distance = Math.abs(targetIndex - currentIndex);
+    
+    // Speed: 1 second total, regardless of distance
+    const duration = 1000; // 1 second in milliseconds
+    
+    // Animate the page scroll
+    animatePageScroll(currentIndex, targetIndex, duration);
+    
+    // Remove active class from all sections and add to target
+    allSections.forEach(section => {
+        section.classList.remove('active');
+    });
+    targetSection.classList.add('active');
+}
+
+function animatePageScroll(fromIndex, toIndex, duration) {
+    const sections = document.querySelectorAll('section');
+    const body = document.documentElement;
+    
+    // Calculate scroll positions
+    const viewportHeight = window.innerHeight;
+    const fromScrollY = fromIndex * viewportHeight + 80; // 80px header
+    const toScrollY = toIndex * viewportHeight + 80;
+    
+    const startTime = Date.now();
+    const startScrollY = window.scrollY;
+    const distance = toScrollY - startScrollY;
+    
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Smooth easing (ease-in-out)
+        const easeProgress = progress < 0.5 
+            ? 2 * progress * progress 
+            : -1 + (4 - 2 * progress) * progress;
+        
+        const currentScrollY = startScrollY + distance * easeProgress;
+        window.scrollTo(0, currentScrollY);
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        }
     }
+    
+    animate();
 }
 
 // Dit zijn de functies die jouw HTML aanroept via onclick
