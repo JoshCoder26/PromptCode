@@ -30,12 +30,10 @@ nav a:hover {
     color: #58a6ff;
 }
 
-/* Zorgt voor het soepele scrollen als je op een tab klikt */
 html {
     scroll-behavior: smooth;
 }
 
-/* Elke sectie vult het hele scherm en centreert de inhoud netjes */
 section {
     min-height: 100vh;
     padding: 80px 40px;
@@ -52,7 +50,7 @@ section {
 }
 
 #about {
-    background-color: #161b22; /* Iets lichter grijs */
+    background-color: #161b22;
     border-top: 1px solid #30363d;
 }
 
