@@ -1,6 +1,35 @@
 html, body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
     overflow: hidden;
     height: 100%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #30363d;
+    background-color: #0d1117;
+}
+
+header h2 {
+    color: #58a6ff;
+    margin: 0;
+}
+
+nav a {
+    color: #8b949e;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #58a6ff;
 }
 
 section {
@@ -22,5 +51,65 @@ section.active {
 #about { background-color: #161b22; }
 #form { background-color: #0d1117; }
 
-section h1, section h2 { color: #58a6ff; margin-bottom: 20px; }
-section p { color: #8b949e; max-width: 600px; font-size: 1.2em; line-height: 1.6; }
+section h1 {
+    color: #58a6ff;
+    margin-bottom: 10px;
+}
+
+section h2 {
+    color: #8b949e;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.price-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 30px;
+    width: 260px;
+    text-align: left;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.price-card:hover {
+    transform: translateY(-8px);
+    border-color: #58a6ff;
+}
+
+.price-card h3 {
+    color: #58a6ff;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.price-card p {
+    font-size: 0.95em;
+    color: #8b949e;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.price-card.gold {
+    border-color: #d29922;
+}
+
+.price-card.gold h3 {
+    color: #d29922;
+}
+
+.price-card.gold:hover {
+    border-color: #f0b429;
+    box-shadow: 0 0 15px rgba(210, 153, 34, 0.2);
+}
