@@ -21,35 +21,26 @@ function changeTab(targetId, newTitle) {
     
     if (!targetSection) return;
     
-    // Calculate direction and distance
-    const isMovingRight = targetIndex > currentIndex;
-    const distance = Math.abs(targetIndex - currentIndex);
-    
-    // Speed: 1 second total, regardless of distance
-    const duration = 1000; // 1 second in milliseconds
-    
-    // Animate the page scroll
-    animatePageScroll(currentIndex, targetIndex, duration);
-    
     // Remove active class from all sections and add to target
     allSections.forEach(section => {
         section.classList.remove('active');
     });
     targetSection.classList.add('active');
+    
+    // Animate the horizontal scroll
+    animateHorizontalScroll(currentIndex, targetIndex, 1000); // 1 second
 }
 
-function animatePageScroll(fromIndex, toIndex, duration) {
-    const sections = document.querySelectorAll('section');
-    const body = document.documentElement;
+function animateHorizontalScroll(fromIndex, toIndex, duration) {
+    const sectionWidth = window.innerWidth;
     
     // Calculate scroll positions
-    const viewportHeight = window.innerHeight;
-    const fromScrollY = fromIndex * viewportHeight + 80; // 80px header
-    const toScrollY = toIndex * viewportHeight + 80;
+    const fromScrollX = fromIndex * sectionWidth;
+    const toScrollX = toIndex * sectionWidth;
     
     const startTime = Date.now();
-    const startScrollY = window.scrollY;
-    const distance = toScrollY - startScrollY;
+    const startScrollX = window.scrollX;
+    const distance = toScrollX - startScrollX;
     
     function animate() {
         const elapsed = Date.now() - startTime;
@@ -60,8 +51,8 @@ function animatePageScroll(fromIndex, toIndex, duration) {
             ? 2 * progress * progress 
             : -1 + (4 - 2 * progress) * progress;
         
-        const currentScrollY = startScrollY + distance * easeProgress;
-        window.scrollTo(0, currentScrollY);
+        const currentScrollX = startScrollX + distance * easeProgress;
+        window.scrollTo(currentScrollX, 0);
         
         if (progress < 1) {
             requestAnimationFrame(animate);
@@ -110,9 +101,11 @@ window.addEventListener('hashchange', () => {
     else if (hash === '#form') displayForm();
 });
 
-// Prevent horizontal scrolling on body
+// Prevent horizontal scrolling on body (except during animations)
+let isAnimating = false;
+
 document.addEventListener('wheel', function(e) {
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && !isAnimating) {
         e.preventDefault();
     }
 }, { passive: false });
@@ -124,6 +117,8 @@ document.addEventListener('touchstart', function(e) {
 }, false);
 
 document.addEventListener('touchmove', function(e) {
+    if (isAnimating) return;
+    
     const currentX = e.touches[0].clientX;
     const diffX = Math.abs(currentX - lastX);
     const diffY = Math.abs(e.touches[0].clientY - (e.touches[0].clientY || 0));
