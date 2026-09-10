@@ -1,3 +1,5 @@
+document.title = "Home - PromptCode"
+documument.querySelector('#home').classList.add('active')
 function changeTab(targetId, newTitle) {
     // 1. Verander de titel van het tabblad
     document.title = newTitle;
@@ -26,5 +28,3 @@ function displayAbout() {
 function displayForm() {
     changeTab('#form', "Request code writing/enhancing/debugging");
 }
-document.title = "Home - PromptCode"
-documument.querySelector('#home').classList.add('active')
