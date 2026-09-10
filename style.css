@@ -45,7 +45,7 @@ section {
     height: 100%;
     padding: 40px;
     box-sizing: border-box;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
