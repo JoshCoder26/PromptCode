@@ -29,3 +29,46 @@ nav a {
 nav a:hover {
     color: #58a6ff;
 }
+
+/* Zorgt voor het soepele scrollen als je op een tab klikt */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Elke sectie vult het hele scherm en centreert de inhoud netjes */
+section {
+    min-height: 100vh;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#home {
+    background-color: #0d1117;
+}
+
+#about {
+    background-color: #161b22; /* Iets lichter grijs */
+    border-top: 1px solid #30363d;
+}
+
+#form {
+    background-color: #0d1117;
+    border-top: 1px solid #30363d;
+}
+
+section h1, section h2 {
+    color: #58a6ff;
+    margin-bottom: 20px;
+}
+
+section p {
+    color: #8b949e;
+    max-width: 600px;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
