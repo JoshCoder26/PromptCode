@@ -4,6 +4,7 @@ html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     height: 100%;
+    overflow-x: hidden;
 }
 header {
     display: flex;
@@ -19,12 +20,18 @@ header h2 {
     margin: 0;
 }
 
+nav {
+    display: flex;
+    gap: 25px;
+    overflow: hidden;
+}
+
 nav a {
     color: #8b949e;
     text-decoration: none;
-    margin-left: 25px;
     font-size: 1.1em;
-    transition: color 0.2s;
+    transition: color 0.2s, transform 0.4s ease-in-out;
+    white-space: nowrap;
 }
 
 nav a:hover {
