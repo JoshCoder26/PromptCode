@@ -25,20 +25,29 @@ function animateNavScroll(targetId) {
     });
     
     if (targetLink) {
-        setTimeout(() => {
-            const linkOffsetLeft = targetLink.offsetLeft;
-            const navWidth = nav.clientWidth;
-            const linkWidth = targetLink.offsetWidth;
-            
-            // Calculate the scroll position to center the link
-            const scrollPosition = linkOffsetLeft - (navWidth / 2) + (linkWidth / 2);
-            
-            // Animate the scroll using requestAnimationFrame for smoothness
-            nav.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
+        // Use requestAnimationFrame to ensure DOM is ready
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                const linkOffsetLeft = targetLink.offsetLeft;
+                const navWidth = nav.clientWidth;
+                const linkWidth = targetLink.offsetWidth;
+                
+                // Calculate scroll position to center the link in the nav
+                const scrollPosition = linkOffsetLeft - (navWidth / 2) + (linkWidth / 2);
+                
+                // Clamp to valid scroll range
+                const maxScroll = nav.scrollWidth - navWidth;
+                const finalPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
+                
+                console.log('Scrolling to:', finalPosition, 'Link offset:', linkOffsetLeft, 'Nav width:', navWidth);
+                
+                // Animate the scroll
+                nav.scrollTo({
+                    left: finalPosition,
+                    behavior: 'smooth'
+                });
             });
-        }, 0);
+        });
     }
 }
 
@@ -58,6 +67,7 @@ function displayForm() {
 // Check URL hash on page load and navigate to appropriate tab
 function initializePageFromHash() {
     const hash = window.location.hash;
+    console.log('Hash detected:', hash);
     
     if (hash === '#about') {
         displayAbout();
@@ -68,18 +78,19 @@ function initializePageFromHash() {
     }
 }
 
-// Initialize on page load
-window.addEventListener('load', initializePageFromHash);
+// Initialize as soon as DOM is ready
+document.addEventListener('DOMContentLoaded', initializePageFromHash);
 
-// Also handle hash changes
+// Also handle hash changes when user clicks back/forward
 window.addEventListener('hashchange', () => {
     const hash = window.location.hash;
+    console.log('Hash changed to:', hash);
     if (hash === '#home') displayHome();
     else if (hash === '#about') displayAbout();
     else if (hash === '#form') displayForm();
 });
 
-// Prevent horizontal scrolling
+// Prevent horizontal scrolling on body
 document.addEventListener('wheel', function(e) {
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
         e.preventDefault();
