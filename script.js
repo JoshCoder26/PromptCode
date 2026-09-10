@@ -1,3 +1,4 @@
+alert("Javascript works")
 document.title = "Home - PromptCode"
 documument.querySelector('#home').classList.add('active')
 function changeTab(targetId, newTitle) {
