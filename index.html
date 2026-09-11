@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +37,7 @@
                 <input type="hidden" name="_next" value="https://joshcoder26.github.io/PromptCode/#sent">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="isCompany" id="fakeIsCompany" value="False">
+                <h3>Now: 50% off! (This implies that you get €100 worth of programming for €50)</h3>
                 <input type="email" name="mail" placeholder="E-mail" required>
                 <br>
                 <input type="checkbox" name="isCompany" id="isCompany" value="True">
@@ -44,7 +45,14 @@
                 <br>
                 <input type="text" name="companyName" id="companyName" oninput="checkCompany()" placeholder="Company name (optional)">
                 <br>
-                <label for="budget">Budget €</label>
+                <label for="budget">Budget </label>
+                <select name="currency">
+                    <option value="EUR" selected>EUR (€) - Euro</option>
+                    <option value="USD">USD ($) - American Dollar</option>
+                    <option value="GBP">GBP (£) - British Pound</option>
+                    <option value="CAD">CAD ($) - Canadian Dollar</option>
+                    <option value="AUD">AUD ($) - Australian Dollar</option>
+                </select>
                 <input type="number" name="budget" placeholder="100" id="budget" min="10" required>
                 <label for="type">What service do you want?</label>
                 <select name="type" id="type" required>
@@ -65,7 +73,7 @@
         </section>
         <section id="sent">
             <h1>Thank you for trusting us with your programming project!</h1>
-            <h2>You will probably recieve a reaction in 3-5 business days.</h2>
+            <h2>You will probably receive a reaction in 3-5 business days.</h2>
         </section>
     </main>
 </body>
