@@ -92,6 +92,6 @@ form {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    overflow: visible;
+    overflow: auto;
     align-items: stretch; 
 }
