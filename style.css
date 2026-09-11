@@ -88,10 +88,9 @@ form {
     background-color: #161b22;
     border: 1px solid #30363d;
     border-radius: 12px;
-    padding: 30px;
+    padding: 20px;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    overflow: auto;
+    flex-direction: row;
     align-items: stretch; 
 }
