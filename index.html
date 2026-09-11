@@ -48,12 +48,18 @@
                 <input type="number" name="budget" placeholder="100" id="budget" min="10" required>
                 <label for="type">What service do you want?</label>
                 <select name="type" id="type" required>
-                    <option value="write">Writing code</option>
-                    <option value="debug">Debugging code</option>
-                    <option value="optimise">Enhancing/optimising code</option>
+                    <option value="Write">Writing code</option>
+                    <option value="Debug">Debugging code</option>
+                    <option value="Optimise">Enhancing/optimising code</option>
                 </select>
-                <label for="request">Your Message:</label>
-                <textarea id="request" name="request" rows="6" cols="50" placeholder="Enter what you want coded/fixed" required></textarea>
+                <label for="programmingLanguage">Programming language(s):</label>
+                <select name="programmingLanguage" id="programmingLanguage" required>
+                    <option value="Web">HTML, JS, CSS</option>
+                    <option>Python</option>
+                    <option>C++</option>
+                    <option>Bash</option>
+                </select>
+                <textarea name="request" rows="6" cols="50" placeholder="Enter what you want coded/fixed" required></textarea>
                 <button type="submit">Submit your request</button>
             </form>
         </section>
