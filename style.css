@@ -52,7 +52,7 @@ section {
     height: 100%;
     padding: 40px;
     box-sizing: border-box;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -68,10 +68,6 @@ main {
     overflow: hidden;
     scroll-behavior: smooth;
     background-color: #0d1117;
-}
-
-section.active {
-    display: flex;
 }
 
 section h1 {

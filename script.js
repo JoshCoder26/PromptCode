@@ -1,10 +1,11 @@
+document.title = "Home - PromptCode"
+document.querySelector('#home').scrollIntoView
+
 if (window.location.hash === "#sent"){
     document.title = "Thank you"
-    document.querySelector('#sent').classList.add('active')
+    document.querySelector('#sent').scrollIntoView
 }
 
-document.title = "Home - PromptCode"
-document.querySelector('#home').classList.add('active')
 function changeTab(targetId, newTitle) {
     document.title = newTitle;
     const targetSection = document.querySelector(targetId);
