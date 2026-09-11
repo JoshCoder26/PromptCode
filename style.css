@@ -91,6 +91,7 @@ form {
     padding: 30px;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    overflow: visible;
     align-items: stretch; 
 }
