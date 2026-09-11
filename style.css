@@ -84,3 +84,16 @@ section h2 {
     margin-top: 0;
     margin-bottom: 30px;
 }
+
+form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+}
