@@ -1,13 +1,13 @@
+if (window.location.hash === "#sent"){
+    document.title = "Thank you"
+    document.querySelector('#sent').classList.add('active')
+}
+
 document.title = "Home - PromptCode"
 document.querySelector('#home').classList.add('active')
 function changeTab(targetId, newTitle) {
-    // 1. Verander de titel van het tabblad
     document.title = newTitle;
-
-    // 2. Zoek de juiste sectie op
     const targetSection = document.querySelector(targetId);
-    
-    // 3. Laat de browser er vloeiend naartoe scrollen
     if (targetSection) {
         targetSection.classList.add('active');
         targetSection.scrollIntoView({ 
