@@ -34,7 +34,7 @@
         <section id="form">
             <h1>Request code writing/enhancing/debugging</h1>
             <form action="https://formsubmit.co/joshua.huizer@gmail.com" method="POST">
-                <input type="email" name="mail" placeholder="E-mail">
+                <input type="email" name="mail" placeholder="E-mail" required>
                 <br>
                 <input type="checkbox" name="isCompany" id="isCompany">
                 <label for="isCompany">I'm a company or I'm doing this for a company.</label>
@@ -42,15 +42,15 @@
                 <input type="text" name="companyName" placeholder="Company name (optional)">
                 <br>
                 <label for="budget">Budget €</label>
-                <input type="number" name="budget" placeholder="100" id="budget">
+                <input type="number" name="budget" placeholder="100" id="budget" required>
                 <label for="type">What service do you want?</label>
-                <select name="type" id="type">
+                <select name="type" id="type" required>
                     <option value="write">Writing code</option>
                     <option value="debug">Debugging code</option>
                     <option value="optimise">Enhancing/optimising code</option>
                 </select>
                 <label for="request">Your Message:</label>
-                <textarea id="request" name="request" rows="6" cols="50" placeholder="Enter what you want coded/fixed"></textarea>
+                <textarea id="request" name="request" rows="6" cols="50" placeholder="Enter what you want coded/fixed" required></textarea>
                 <button type="submit">Submit your request</button>
             </form>
         </section>
