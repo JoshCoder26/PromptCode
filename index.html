@@ -36,12 +36,13 @@
             <form action="https://formsubmit.co/340db9a6a488abf14862277d32b1610c" method="POST">
                 <input type="hidden" name="_next" value="https://joshcoder26.github.io/PromptCode/#sent">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="isCompany" id="fakeIsCompany" value="False">
                 <input type="email" name="mail" placeholder="E-mail" required>
                 <br>
-                <input type="checkbox" name="isCompany" id="isCompany">
+                <input type="checkbox" name="isCompany" id="isCompany" value="True">
                 <label for="isCompany">I'm a company or I'm doing this for a company.</label>
                 <br>
-                <input type="text" name="companyName" placeholder="Company name (optional)">
+                <input type="text" name="companyName" onchange="checkCompany()" placeholder="Company name (optional)">
                 <br>
                 <label for="budget">Budget €</label>
                 <input type="number" name="budget" placeholder="100" id="budget" min="10" required>

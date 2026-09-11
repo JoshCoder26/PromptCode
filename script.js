@@ -28,3 +28,12 @@ function displayAbout() {
 function displayForm() {
     changeTab('#form', "Request code writing/enhancing/debugging");
 }
+
+function checkCompany() {
+    if (document.getElementById("fakeIsCompany") === ""){
+        document.getElementById("isCompany").checked = false
+    }
+    else {
+        document.getElementById("isCompany").checked = true
+    }
+}
