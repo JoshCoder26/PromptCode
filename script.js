@@ -30,7 +30,6 @@ function displayForm() {
 }
 
 function checkCompany() {
-    alert("Change detected")
     if (document.getElementById("companyName").value === ""){
         document.getElementById("isCompany").checked = false
     }
