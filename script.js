@@ -30,6 +30,7 @@ function displayForm() {
 }
 
 function checkCompany() {
+    alert("Change detected")
     if (document.getElementById("fakeIsCompany") === ""){
         document.getElementById("isCompany").checked = false
     }
